@@ -1,3 +1,5 @@
+// Basic api with data serialization and redirection
+
 var express = require('express'),
 	app = express();
 

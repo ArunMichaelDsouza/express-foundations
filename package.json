@@ -1,0 +1,23 @@
+{
+  "name": "express-foundations",
+  "version": "1.0.0",
+  "description": "Playing around with Express 4",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.14.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArunMichaelDsouza/express-foundations.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArunMichaelDsouza/express-foundations/issues"
+  },
+  "homepage": "https://github.com/ArunMichaelDsouza/express-foundations#readme"
+}

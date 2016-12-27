@@ -12,9 +12,10 @@ app.get('/', function(req, res) {
 
 // Automatic data serialization
 app.get('/data', function(req, res) {
-	res.send([1,2,3]);
+	res.json([1,2,3]);
 	// res.send({id: 11}); // Same as res.json({id: 11})
 	// res.send('<h1>Text</h1>');
+	// res.json('<h1>Text</h1>') // converts this to json string
 });
 
 // Route redirection

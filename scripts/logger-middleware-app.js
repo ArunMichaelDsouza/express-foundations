@@ -5,7 +5,11 @@ var express = require('express'),
 	app = express(),
 	logger = require('./logger-middleware'); // Including middleware module
 
-app.use(logger); // Applying middleware module
+	logger.init({
+		httpMethod: true
+	});
+
+app.use(logger.call); // Applying middleware module
 
 app.use(express.static(path.join(__dirname, 'public')));
 

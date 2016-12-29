@@ -5,7 +5,8 @@ var express = require('express'),
 	app = express(),
 	logger = require('./logger-middleware'); // Including middleware module
 
-	logger.init({
+	// Add logger options
+	logger.options({
 		httpMethod: true
 	});
 

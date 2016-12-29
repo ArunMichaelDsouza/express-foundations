@@ -1,7 +1,7 @@
 // Custom logger middleware
 
 var loggerOptions, logger = {
-	init: function(options) {
+	options: function(options) {
 		loggerOptions = options;
 	},
 	call: function(req, res, next) {

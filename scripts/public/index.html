@@ -12,6 +12,7 @@
 	<form id="updateData">
 		<input type="text" required placeholder="Enter new id" name="id"/>
 		<button>Update</button>
+		<button type="button" id="del">Delete</button>
 	</form>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -19,6 +20,7 @@
 		$.get('/getData', function(data) {
 			$('#id').html(data.id);
 		});
+
 		$('#updateData').on('submit', function(e) {
 			e.preventDefault();
 
@@ -27,6 +29,18 @@
 				type: 'POST',
 				url: '/setData',
 				data: data
+			}).done(function(res) {
+				$('#id').html(res);
+			});
+		});
+
+		$('#del').on('click', function(e) {
+			e.preventDefault();
+
+			$.ajax({
+				type: 'DELETE',
+				url: '/delData',
+				data: {id: $('#id').text()}
 			}).done(function(res) {
 				$('#id').html(res);
 			});

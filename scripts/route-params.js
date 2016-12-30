@@ -3,6 +3,12 @@
 var express = require('express'),
 	app = express();
 
+// Param middleware to access route params
+app.param('id', function(req, res, next) {
+	req.id = parseInt(req.params.id, 10) + 1;
+	next();
+});
+
 app.get('/getData', function(req, res) {
 	var arr = [1,2,3,4,5,6,7];
 
@@ -17,15 +23,15 @@ app.get('/getData', function(req, res) {
 
 app.get('/getId/:id', function(req, res) {
 	var ids = {
-		1: 'This is id 1',
-		2: 'This is id 2',
-		3: 'This is id 3'
+		2: 'This is id 1',
+		3: 'This is id 2',
+		4: 'This is id 3'
 	}, resData = {};
 
-	// Accessing request route params
-	if(ids[req.params.id]) {
+	// Accessing request route params set in param middleware
+	if(ids[req.id]) {
 		resData.status = 200;
-		resData.data = ids[req.params.id];
+		resData.data = ids[req.id];
 	}
 	else {
 		resData.status = 404;

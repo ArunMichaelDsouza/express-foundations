@@ -9,10 +9,27 @@
 	<img src="express.png"/>
 	<h1>Data from Express Api</h1>
 	<h3>Id - <span id="id"></span></h1>
+	<form id="updateData">
+		<input type="text" required placeholder="Enter new id" name="id"/>
+		<button>Update</button>
+	</form>
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script>
 		$.get('/getData', function(data) {
 			$('#id').html(data.id);
+		});
+		$('#updateData').on('submit', function(e) {
+			e.preventDefault();
+
+			var data = $(this).serialize();
+			$.ajax({
+				type: 'POST',
+				url: '/setData',
+				data: data
+			}).done(function(res) {
+				$('#id').html(res);
+			});
 		});
 	</script>
 </body>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Quotes App</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-span-2">
+            <form id="createQuote" class="quote-form">
+                <h1>Create new Quote</h1>
+                <input type="text" name="name" placeholder="Enter name" required/>
+                <textarea name="quote" placeholder="Enter quote" required></textarea>
+                <button>Create Quote</button>
+            </form>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('#createQuote').on('submit', function(e) {
+            e.preventDefault();
+
+            $.ajax({
+                type: 'POST',
+				url: '/createQuote',
+				data: $(this).serialize()
+            }).done(function() {
+
+            });
+        });
+    });
+    </script>
+</body>
+
+</html>

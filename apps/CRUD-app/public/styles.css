@@ -1,0 +1,70 @@
+/* App styles */
+
+html,
+body {
+	font-family: sans-serif;;
+}
+
+.quote-form {
+	background-color: #eaeaea;
+	padding: 20px;
+	display: inline-block;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	width: 350px;
+}
+
+.quote-form > h1 {
+	color: #333;
+	font-weight: 400;
+	margin: 0 0 20px;
+	font-size: 1.4em;
+	padding-bottom: 5px;
+	display: inline-block;
+	border-bottom: 1px solid #333;
+}
+
+.quote-form > input,
+.quote-form > textarea,
+.quote-form > button {
+	display: block;
+	width: 100%;
+	padding: 10px;
+	border-radius: 3px;
+	font-size: .85em;
+}
+
+.quote-form > input,
+.quote-form > textarea {
+	border: 1px solid #bababa;
+	box-sizing: border-box;
+	margin-bottom: 20px;
+	resize: none;
+}
+
+.quote-form > button {
+	background-color: #50a4e2;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

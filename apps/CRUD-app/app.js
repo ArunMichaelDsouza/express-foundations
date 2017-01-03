@@ -33,13 +33,18 @@ MongoClient.connect(dbUrl, function(err, db) {
 });
 
 app.get('/', function(req, res) {
-    res.redirect('/quotes');
-});
-
-app.get('/quotes', function(req, res) {
     res.sendFile('index.html');
 });
 
 app.post('/createQuote', function(req, res) {
-    console.log(req.body);
+    DB.collection('quotes').insert(req.body, function(err, result) {
+    	if(err) {
+    		console.log(err);
+    		res.send({success: 0});
+    	}
+    	else {
+    		console.log(result);
+    		res.redirect('/');
+    	}
+    });
 });

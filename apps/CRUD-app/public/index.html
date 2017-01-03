@@ -28,8 +28,8 @@
                 type: 'POST',
 				url: '/createQuote',
 				data: $(this).serialize()
-            }).done(function() {
-
+            }).done(function(res) {
+            	console.log(res);
             });
         });
     });

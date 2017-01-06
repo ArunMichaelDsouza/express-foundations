@@ -8,28 +8,30 @@
 </head>
 
 <body>
-    <div class="row">
-        <div class="col-span-2">
-            <form id="createQuote" class="quote-form">
-                <h1>Create new Quote</h1>
-                <input type="text" name="name" placeholder="Enter name" required/>
-                <textarea name="quote" placeholder="Enter quote" required></textarea>
-                <button>Create Quote</button>
-            </form>
+    <main>
+        <div class="row">
+            <div class="col-span-4">
+                <form class="quote-form" method="POST" action="createQuote">
+                    <h1>Create new Quote</h1>
+                    <input type="text" name="name" placeholder="Enter name" required/>
+                    <textarea name="quote" placeholder="Enter quote" required></textarea>
+                    <button>Create Quote</button>
+                </form>
+            </div>
+            <div class="col-span-8">
+                <ul id="quotes-list" class="quotes-list"></ul>
+            </div>
         </div>
-    </div>
+    </main>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script>
     $(document).ready(function() {
-        $('#createQuote').on('submit', function(e) {
-            e.preventDefault();
-
-            $.ajax({
-                type: 'POST',
-				url: '/createQuote',
-				data: $(this).serialize()
-            }).done(function(res) {
-            	console.log(res);
+        $.ajax({
+            type: 'GET',
+            url: '/getQuotes'
+        }).done(function(res) {
+            res.forEach(function(data) {
+                $('#quotes-list').append('<li class="quote"><span>'+data.name+'</span><p>'+data.quote+'</p></li>');
             });
         });
     });

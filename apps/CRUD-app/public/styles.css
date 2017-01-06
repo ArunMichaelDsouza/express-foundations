@@ -2,7 +2,9 @@
 
 html,
 body {
-	font-family: sans-serif;;
+	font-family: sans-serif;
+	margin: 0;
+	padding: 0;
 }
 
 .quote-form {
@@ -47,6 +49,56 @@ body {
 	color: #fff;
 	border: none;
 	cursor: pointer;
+}
+
+.row:after,
+.row:before {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+.row {
+	margin: 15px;
+}
+
+*[class*='col-span'] {
+	float: left;
+	padding: 0 15px;
+}
+
+.col-span-4 {
+	width: 33.3333%;
+	
+}
+
+.col-span-8 {
+	width: 60%;
+}
+
+.quotes-list {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.quote {
+	background-color: #eaeaea;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
+.quote > span {
+	font-weight: 400;
+    font-style: italic;
+    font-size: 1.15em;
+}
+
+.quote > p {
+	margin: 10px 0;
+	font-weight: 300;
+	padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
 }
 
 

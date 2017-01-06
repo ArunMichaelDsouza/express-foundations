@@ -36,15 +36,32 @@ app.get('/', function(req, res) {
     res.sendFile('index.html');
 });
 
+app.get('/getQuotes', function(req, res) {
+    DB.collection('quotes').find().toArray(function(err, result) {
+        res.send(result);
+    });
+});
+
 app.post('/createQuote', function(req, res) {
     DB.collection('quotes').insert(req.body, function(err, result) {
     	if(err) {
-    		console.log(err);
-    		res.send({success: 0});
+    		res.send('Some error occurred!');
     	}
     	else {
-    		console.log(result);
     		res.redirect('/');
     	}
     });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+

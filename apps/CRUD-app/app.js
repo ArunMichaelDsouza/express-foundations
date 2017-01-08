@@ -14,6 +14,9 @@ var express = require('express'),
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+
 var dbUrl = 'mongodb://' + database.username + ':' + database.password + database.url,
     DB;
 
@@ -33,12 +36,10 @@ MongoClient.connect(dbUrl, function(err, db) {
 });
 
 app.get('/', function(req, res) {
-    res.sendFile('index.html');
-});
-
-app.get('/getQuotes', function(req, res) {
     DB.collection('quotes').find().toArray(function(err, result) {
-        res.send(result);
+        res.render('index', {
+            quotes: result
+        });
     });
 });
 

@@ -1,0 +1,21 @@
+doctype html
+html(lang="en")
+head
+    title Quotes App
+    meta(charset="UTF-8")
+    link(rel="stylesheet" href="styles.css")
+body
+    main
+        .row
+            .col-span-4
+                form.quote-form(method="POST" action="createQuote")
+                    h1 Create new Quote
+                    input(type="text" name="name" placeholder="Enter name" required)
+                    textarea(name="quote" placeholder="Enter quote" required)
+                    button Create Quote
+            .col-span-8
+                ul.quotes-list
+                    for data in quotes
+                        li.quote
+                            span!= data.name
+                            p!= data.quote 

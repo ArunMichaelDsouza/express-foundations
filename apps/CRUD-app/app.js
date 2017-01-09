@@ -54,6 +54,26 @@ app.post('/createQuote', function(req, res) {
     });
 });
 
+app.post('/updateQuote', function(req, res) {
+    var name = req.body.name,
+        quote = req.body.updatedQuote;
+
+    DB.collection('quotes')
+      .findOneAndUpdate({name: name}, {
+        $set: {
+            name: name,
+            quote: quote
+        }
+      }, function(err, result) {
+            if(err) {
+                res.send('Some error occurred!');
+            }
+            else {
+                res.redirect('/');
+            }
+      })
+});
+
 
 
 

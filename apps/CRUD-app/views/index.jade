@@ -17,5 +17,39 @@ body
                 ul.quotes-list
                     for data in quotes
                         li.quote
-                            span!= data.name
-                            p!= data.quote 
+                            form(method="POST" action="updateQuote")
+                                input(type="hidden" name="name" value="#{data.name}")
+                                span.name!= data.name
+                                textarea.hidden.editor(id="quoteText-#{data._id}" name="updatedQuote" required)
+                                    | !{data.quote}
+                                .update-btns(id="btn-#{data._id}").hidden
+                                    button.hide(type="button" data-id="#{data._id}") Cancel
+                                    button Update
+                                p(id="quote-#{data._id}")!= data.quote 
+                                    span.edit(data-id="#{data._id}") Edit
+    script(src="https://code.jquery.com/jquery-1.12.4.min.js")
+    script.
+        function showEditingOption(id) {
+            $('#quote-'+id).hide();
+            $('#quoteText-'+id).show();
+            $('#btn-'+id).show();
+        };
+
+        function hideEditingOption(id) {
+            $('#quote-'+id).show();
+            $('#quoteText-'+id).hide();
+            $('#btn-'+id).hide();
+        };
+
+        $('.edit').on('click', function() {
+            var id = $(this).attr('data-id');
+            showEditingOption(id);
+        });
+
+        $('.hide').on('click', function() {
+            var id = $(this).attr('data-id');
+            hideEditingOption(id);
+        });
+
+
+

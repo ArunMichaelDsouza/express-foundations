@@ -123,13 +123,18 @@ body {
     border-bottom: 1px solid #ddd;
 }
 
-.edit {
+.click {
 	display: inline-block;
 	color: #00a0e3;
 	font-size: .8em;
 	text-decoration: underline;
 	margin: 0 5px;
 	cursor: pointer;
+	font-weight: 300;
+}
+
+.right {
+	text-align: right;
 }
 
 .hidden {

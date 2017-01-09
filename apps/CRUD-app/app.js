@@ -74,6 +74,22 @@ app.post('/updateQuote', function(req, res) {
       })
 });
 
+app.post('/deleteQuote', function(req, res) {
+    var name = req.body.name;
+
+    DB.collection('quotes')
+      .findOneAndDelete({name: name}, function(err, result) {
+            if(err) {
+                res.send({success: 0});
+            }
+            else {
+                res.send({success: 1});
+            }
+      })
+});
+
+
+
 
 
 

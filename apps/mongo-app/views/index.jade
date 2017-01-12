@@ -4,7 +4,15 @@ html
 		title User list
 		meta(charset="UTF-8")
 	body
-		h1 User list
+		h2 Create user
+			form(method="POST" action="addUser")
+				input(type="text" placeholder="Enter name" name="name" required) 
+				br
+				input(type="text" placeholder="Enter uid" name="uid" required)
+				br
+				button Create
+		hr
+		h2 User list
 		ul
 			for user in users
 				li!= user.name

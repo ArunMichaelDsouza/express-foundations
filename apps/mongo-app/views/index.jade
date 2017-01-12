@@ -1,0 +1,10 @@
+doctype
+html
+	head
+		title User list
+		meta(charset="UTF-8")
+	body
+		h1 User list
+		ul
+			for user in users
+				li!= user.name

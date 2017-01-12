@@ -1,0 +1,21 @@
+doctype
+html
+	head
+		title User list
+		meta(charset="UTF-8")
+	body
+		h1 User Info
+		
+		strong Name : 
+		span!= name
+		hr
+
+		if id
+			strong Id : 
+			span!= id
+			hr
+
+		if uid
+			strong Uid : 
+			span!= uid
+			hr

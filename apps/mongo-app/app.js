@@ -79,17 +79,26 @@ app.post('/addUser', function(req, res) {
 app.post('/bulkAddUsers', function(req, res) {
     var users = [{
         name: 'Jonah',
-        uid: 117
+        uid: 117,
+        _id: 12
     }, {
         name: 'Miles',
-        uid: 118
+        uid: 118,
+        _id: 12
+    }, {
+        name: 'Jay',
+        uid: 118,
+        _id: 14
     }];
 
-    return DB.collection('list').insertMany(users)
+    return DB.collection('list').insertMany(users, {
+        ordered: false
+    })
         .then(function() {
             res.redirect('/');
         })
-        .catch(function() {
+        .catch(function(err) {
+            console.log(err);
             res.send('Some error occurred!');
         });
 });

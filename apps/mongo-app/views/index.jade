@@ -15,4 +15,5 @@ html
 		h2 User list
 		ul
 			for user in users
-				li!= user.name
+				li
+					a(href="/user/#{user.name}")!= user.name

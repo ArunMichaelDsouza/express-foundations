@@ -52,7 +52,7 @@ app.get('/user/:user', function(req, res) {
                 uid: uid
             }) : res.send('User not found!');
         })
-        .catch(function() {
+        .catch(function(err) {
             res.send('Some error occurred!');
         });
 });
@@ -65,8 +65,27 @@ app.post('/addUser', function(req, res) {
 
     return DB.collection('list').insertOne({ 
     		name: req.body.name,
-    		uid: req.body.uid
+    		uid: parseInt(req.body.uid, 10)
     	})
+        .then(function() {
+            res.redirect('/');
+        })
+        .catch(function() {
+            res.send('Some error occurred!');
+        });
+});
+
+// Route to add users in bulk
+app.post('/bulkAddUsers', function(req, res) {
+    var users = [{
+        name: 'Jonah',
+        uid: 117
+    }, {
+        name: 'Miles',
+        uid: 118
+    }];
+
+    return DB.collection('list').insertMany(users)
         .then(function() {
             res.redirect('/');
         })

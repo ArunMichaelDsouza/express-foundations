@@ -176,6 +176,34 @@ app.get('/type', function(req, res) {
 		});
 });	
 
+// Logical operators
+app.get('/and', function(req, res) {
+	return DB.collection('list').find({
+		$and: [{"Year": { "$exists": true }}, {"Year": { "$gt": "2015" }}]
+	}, { "Title": 1, "_id": 0 }).toArray()
+		.then(function(movies) {
+			res.send(movies);
+		})
+		.catch(function(err) {
+			console.log(err);
+			res.send('Data not found!');
+		});
+});	
+
+app.get('/or', function(req, res) {
+	return DB.collection('list').find({
+		$or: [{ "Year": { "$gte": "2016" }}, {"Actors": "Gwyneth Paltrow"}]
+	}, { "Title": 1, "_id": 0 }).toArray()
+		.then(function(movies) {
+			res.send(movies);
+		})
+		.catch(function(err) {
+			console.log(err);
+			res.send('Data not found!');
+		});
+});	
+
+
 
 
 

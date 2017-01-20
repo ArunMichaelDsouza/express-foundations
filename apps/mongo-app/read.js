@@ -203,6 +203,48 @@ app.get('/or', function(req, res) {
 		});
 });	
 
+// Array operators
+app.get('/all', function(req, res) {
+	return DB.collection('list').find({
+		"Genre": { "$all": ["Action", "Sci-Fi"] } 
+	}, { "Title": 1, "_id": 0 }).toArray()
+		.then(function(movies) {
+			res.send(movies);
+		})
+		.catch(function(err) {
+			console.log(err);
+			res.send('Data not found!');
+		});
+});	
+
+app.get('/size', function(req, res) {
+	return DB.collection('list').find({
+		"Writer": { "$size": 2 } 
+	}, { "Title": 1, "_id": 0 }).toArray()
+		.then(function(movies) {
+			res.send(movies);
+		})
+		.catch(function(err) {
+			console.log(err);
+			res.send('Data not found!');
+		});
+});	
+
+app.get('/elemMatch', function(req, res) {
+	return DB.collection('list').find({
+		"profit": { "$elemMatch": { "country": "USA", "revenue": { "$gt": 12 } } } 
+	}, { "Title": 1, "_id": 0 }).toArray()
+		.then(function(movies) {
+			res.send(movies);
+		})
+		.catch(function(err) {
+			console.log(err);
+			res.send('Data not found!');
+		});
+});	
+
+
+
 
 
 

@@ -94,6 +94,12 @@ module.exports = {
             "imdbVotes": "564,080",
             "imdbID": "tt1431045",
             "reviewed": true,
+            "profit": [
+                {
+                    "country": "USA",
+                    "revenue": 14
+                }
+            ],
             "type": "movie"
         }
     ]

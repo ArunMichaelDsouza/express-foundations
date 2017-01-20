@@ -66,7 +66,7 @@ app.get('/findItemInArray', function(req, res) {
 app.get('/arraySpecificPositionMatch', function(req, res) {
 	return DB.collection('list').find({
 		"Actors.1": "Chris Evans"
-	}).toArray()
+	}, { "Title": 1, "_id": 0 }).toArray()
 		.then(function(movies) {
 			res.send(movies);
 		})

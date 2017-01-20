@@ -51,6 +51,18 @@ app.get('/exactArrayMatch', function(req, res) {
 		});
 });	
 
+app.get('/findItemInArray', function(req, res) {
+	return DB.collection('list').find({
+		"Genre": "Action"
+	}).toArray()
+		.then(function(movies) {
+			res.send(movies);
+		})
+		.catch(function() {
+			res.send('Data not found!');
+		});
+});	
+
 
 
 

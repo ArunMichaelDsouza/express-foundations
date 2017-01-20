@@ -63,6 +63,18 @@ app.get('/findItemInArray', function(req, res) {
 		});
 });	
 
+app.get('/arraySpecificPositionMatch', function(req, res) {
+	return DB.collection('list').find({
+		"Actors.1": "Chris Evans"
+	}).toArray()
+		.then(function(movies) {
+			res.send(movies);
+		})
+		.catch(function() {
+			res.send('Data not found!');
+		});
+});	
+
 
 
 

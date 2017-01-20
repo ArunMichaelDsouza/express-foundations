@@ -93,6 +93,7 @@ module.exports = {
             "imdbRating": "8.1",
             "imdbVotes": "564,080",
             "imdbID": "tt1431045",
+            "reviewed": true,
             "type": "movie"
         }
     ]

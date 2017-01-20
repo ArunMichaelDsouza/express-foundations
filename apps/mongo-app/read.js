@@ -149,6 +149,33 @@ app.get('/in', function(req, res) {
 		});
 });	
 
+// Element operators
+app.get('/exists', function(req, res) {
+	return DB.collection('list').find({
+		"reviewed": { "$exists": true }
+	}, { "Title": 1 }).toArray()
+		.then(function(movies) {
+			res.send(movies);
+		})
+		.catch(function(err) {
+			console.log(err);
+			res.send('Data not found!');
+		});
+});	
+
+app.get('/type', function(req, res) {
+	return DB.collection('list').find({
+		"reviewed": { "$type": "bool" }
+	}, { "Title": 1 }).toArray()
+		.then(function(movies) {
+			res.send(movies);
+		})
+		.catch(function(err) {
+			console.log(err);
+			res.send('Data not found!');
+		});
+});	
+
 
 
 

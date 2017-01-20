@@ -39,7 +39,17 @@ app.get('/keyInObject', function(req, res) {
 		});
 });	
 
-
+app.get('/exactArrayMatch', function(req, res) {
+	return DB.collection('list').find({
+		"Genre": ["Action", "Adventure", "Comedy"]
+	}).toArray()
+		.then(function(movies) {
+			res.send(movies);
+		})
+		.catch(function() {
+			res.send('Data not found!');
+		});
+});	
 
 
 

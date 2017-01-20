@@ -75,6 +75,80 @@ app.get('/arraySpecificPositionMatch', function(req, res) {
 		});
 });	
 
+// Query operator based queries
+app.get('/gt', function(req, res) {
+	return DB.collection('list').find({
+		"Tomato.meter": { "$gt": 90 }
+	}).toArray()
+		.then(function(movies) {
+			res.send(movies);
+		})
+		.catch(function() {
+			res.send('Data not found!');
+		});
+});	
+
+app.get('/gte', function(req, res) {
+	return DB.collection('list').find({
+		"Tomato.meter": { "$gte": 95 }
+	}).toArray()
+		.then(function(movies) {
+			res.send(movies);
+		})
+		.catch(function() {
+			res.send('Data not found!');
+		});
+});	
+
+app.get('/lt', function(req, res) {
+	return DB.collection('list').find({
+		"Tomato.meter": { "$lt": 80 }
+	}).toArray()
+		.then(function(movies) {
+			res.send(movies);
+		})
+		.catch(function() {
+			res.send('Data not found!');
+		});
+});	
+
+app.get('/lte', function(req, res) {
+	return DB.collection('list').find({
+		"Tomato.meter": { "$lte": 75 }
+	}).toArray()
+		.then(function(movies) {
+			res.send(movies);
+		})
+		.catch(function() {
+			res.send('Data not found!');
+		});
+});	
+
+app.get('/ne', function(req, res) {
+	return DB.collection('list').find({
+		"Tomato.meter": { "$ne": 10 }
+	}, { "Title": 1 }).toArray()
+		.then(function(movies) {
+			res.send(movies);
+		})
+		.catch(function() {
+			res.send('Data not found!');
+		});
+});	
+
+app.get('/in', function(req, res) {
+	return DB.collection('list').find({
+		"Actors": { "$in": ["Robert Downey Jr."] }
+	}, { "Title": 1 }).toArray()
+		.then(function(movies) {
+			res.send(movies);
+		})
+		.catch(function(err) {
+			console.log(err);
+			res.send('Data not found!');
+		});
+});	
+
 
 
 

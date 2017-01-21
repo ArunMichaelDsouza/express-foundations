@@ -1,4 +1,4 @@
-// Mongo fetch queries
+// Mongo read queries
 
 var MongoClient = require('mongodb').MongoClient,
 	movies = require('./data').movies,

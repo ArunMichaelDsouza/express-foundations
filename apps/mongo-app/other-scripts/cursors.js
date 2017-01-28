@@ -8,6 +8,11 @@ MongoClient.connect('mongodb://localhost:27017/crunchbase')
 			'category_code': 'biotech'
 		});
 
+		cursor.project({
+			'name': 1,
+			'_id': 0
+		});
+
 		cursor.forEach(function(doc) {
 			console.log(doc);
 		}, function(err) {

@@ -20,7 +20,7 @@ app.get('/getData', function(req, res) {
 
 // Post request with body params sent back via response
 app.post('/setData', function(req, res) {
-	res.send(200).send(req.body.id);
+	res.status(200).send(req.body.id);
 });
 
 app.delete('/delData', function(req, res) {

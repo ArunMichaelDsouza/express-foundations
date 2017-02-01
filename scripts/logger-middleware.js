@@ -1,8 +1,9 @@
 // Custom logger middleware
 
-var loggerOptions, logger = {
-	options: function(options) {
-		loggerOptions = options;
+var loggerOptions, 
+	logger = {
+		options: function(options) {
+			loggerOptions = options;
 	},
 	call: function(req, res, next) {
 		var startTime = +new Date(), // Calculate request start time
